@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		68ED51391E9E5FB100949A55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ED51381E9E5FB100949A55 /* AppDelegate.swift */; };
-		68ED513B1E9E5FB100949A55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ED513A1E9E5FB100949A55 /* ViewController.swift */; };
+		68ED513B1E9E5FB100949A55 /* RainyShineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ED513A1E9E5FB100949A55 /* RainyShineViewController.swift */; };
 		68ED513E1E9E5FB100949A55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68ED513C1E9E5FB100949A55 /* Main.storyboard */; };
 		68ED51401E9E5FB100949A55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68ED513F1E9E5FB100949A55 /* Assets.xcassets */; };
 		68ED51431E9E5FB100949A55 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68ED51411E9E5FB100949A55 /* LaunchScreen.storyboard */; };
@@ -20,7 +20,7 @@
 		1939EF693AAD25403C86F389 /* Pods-RainyShine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RainyShine.release.xcconfig"; path = "Pods/Target Support Files/Pods-RainyShine/Pods-RainyShine.release.xcconfig"; sourceTree = "<group>"; };
 		68ED51351E9E5FB100949A55 /* RainyShine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RainyShine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68ED51381E9E5FB100949A55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		68ED513A1E9E5FB100949A55 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		68ED513A1E9E5FB100949A55 /* RainyShineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RainyShineViewController.swift; path = RainyShine/RainyShineViewController.swift; sourceTree = "<group>"; };
 		68ED513D1E9E5FB100949A55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		68ED513F1E9E5FB100949A55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68ED51421E9E5FB100949A55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,9 +57,36 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6895569E1E9F9CF8004CA210 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				68ED513A1E9E5FB100949A55 /* RainyShineViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		6895569F1E9F9CFE004CA210 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				68ED513C1E9E5FB100949A55 /* Main.storyboard */,
+				68ED51411E9E5FB100949A55 /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		689556A01E9F9D03004CA210 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		68ED512C1E9E5FB100949A55 = {
 			isa = PBXGroup;
 			children = (
+				689556A01E9F9D03004CA210 /* Model */,
+				6895569F1E9F9CFE004CA210 /* View */,
+				6895569E1E9F9CF8004CA210 /* Controller */,
 				68ED51371E9E5FB100949A55 /* RainyShine */,
 				68ED51361E9E5FB100949A55 /* Products */,
 				5DCC1EE806E2C0ACFDF9F56B /* Pods */,
@@ -79,10 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				68ED51381E9E5FB100949A55 /* AppDelegate.swift */,
-				68ED513A1E9E5FB100949A55 /* ViewController.swift */,
-				68ED513C1E9E5FB100949A55 /* Main.storyboard */,
 				68ED513F1E9E5FB100949A55 /* Assets.xcassets */,
-				68ED51411E9E5FB100949A55 /* LaunchScreen.storyboard */,
 				68ED51441E9E5FB100949A55 /* Info.plist */,
 			);
 			path = RainyShine;
@@ -212,7 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68ED513B1E9E5FB100949A55 /* ViewController.swift in Sources */,
+				68ED513B1E9E5FB100949A55 /* RainyShineViewController.swift in Sources */,
 				68ED51391E9E5FB100949A55 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -226,6 +250,7 @@
 				68ED513D1E9E5FB100949A55 /* Base */,
 			);
 			name = Main.storyboard;
+			path = RainyShine;
 			sourceTree = "<group>";
 		};
 		68ED51411E9E5FB100949A55 /* LaunchScreen.storyboard */ = {
@@ -234,6 +259,7 @@
 				68ED51421E9E5FB100949A55 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = RainyShine;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -377,6 +403,7 @@
 				68ED51491E9E5FB100949A55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
