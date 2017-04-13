@@ -22,6 +22,8 @@ class RainyShineViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var weatherForecastTableView: UITableView!
     
+    let currentWeather = CurrentWeather()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -29,6 +31,12 @@ class RainyShineViewController: UIViewController, UITableViewDataSource, UITable
         weatherForecastTableView.dataSource = self
         weatherForecastTableView.delegate = self
         
+        //print(WEATHER_URL)
+        currentWeather.downloadWeatherData {
+            
+            // parse response
+            
+        }
         
     }
     
