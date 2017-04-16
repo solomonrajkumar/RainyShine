@@ -35,8 +35,10 @@ class RainyShineViewController: UIViewController, UITableViewDataSource, UITable
         currentWeather.downloadWeatherData {
             
             // parse response
+            self.updateUI()
             
         }
+        
         
     }
     
@@ -57,6 +59,14 @@ class RainyShineViewController: UIViewController, UITableViewDataSource, UITable
         return cell
         
         
+    }
+    
+    func updateUI() {
+        dateLabel.text = currentWeather.date
+        currentLocationLabel.text = currentWeather.cityName
+        currentWeatherLabel.text = currentWeather.weatherType
+        dateLabel.text = currentWeather.date
+        weatherIcon.image = UIImage(named: "\(currentWeather.weatherType)")
     }
 
     
