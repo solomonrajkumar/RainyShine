@@ -23,6 +23,7 @@ class RainyShineViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var weatherForecastTableView: UITableView!
     
     let currentWeather = CurrentWeather()
+    let forecastData = ForecastData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,10 @@ class RainyShineViewController: UIViewController, UITableViewDataSource, UITable
             // parse response
             self.updateUI()
             
+        }
+        
+        forecastData.downloadWeatherForecastData {
+            // set table view cells
         }
         
         
@@ -67,6 +72,7 @@ class RainyShineViewController: UIViewController, UITableViewDataSource, UITable
         currentWeatherLabel.text = currentWeather.weatherType
         dateLabel.text = currentWeather.date
         weatherIcon.image = UIImage(named: "\(currentWeather.weatherType)")
+        temperatureLabel.text = "\(currentWeather.currentTemperature)°"
     }
 
     

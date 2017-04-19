@@ -54,6 +54,7 @@ class CurrentWeather {
         }
         else {
             
+            // set the current date
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .long
             dateFormatter.timeStyle = .none
@@ -74,15 +75,27 @@ class CurrentWeather {
             
             if let weatherDataDictionary = response.result.value as? Dictionary<String, AnyObject> {
                 
+                // set cityName
                 if let cityName = weatherDataDictionary["name"] as? String {
                     self._cityName = cityName.capitalized
                 }
                 
-                let weather = weatherDataDictionary["weather"] as! [Dictionary<String,AnyObject>]
-                let weatherType = weather[0]["main"] as! String
-                self._weatherType = weatherType.capitalized                
+                // set weather Type
+                if let weather = weatherDataDictionary["weather"] as? [Dictionary<String,AnyObject>] {
+                    let weatherType = weather[0]["main"] as! String
+                    self._weatherType = weatherType.capitalized
+                }
+                
+                // set current temperature
+                if let main = weatherDataDictionary["main"] as? Dictionary<String, AnyObject> {
+                    let temperature = main["temp"] as! Double
+                    let temperatureInCelsius = Int(round(temperature - 273.15))
+                    self._currentTemperature = "\(temperatureInCelsius)"
+                }
+                
             }
-           completed()
+            
+            completed()
         }
         
         
