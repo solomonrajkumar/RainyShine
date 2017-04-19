@@ -59,13 +59,15 @@ class ForecastData {
                         
                         if let temperatureData = forecastDetail["temp"] as? Dictionary<String, AnyObject> {
                             
-                            if let minTemperature = temperatureData["min"] as? Double {
+                            if let minTemperatureInKelvin = temperatureData["min"] as? Double {
                                 //print(minTemperature)
+                                let minTemperature = Int(round(minTemperatureInKelvin - 273.15))
                                 forecastDataObj._minTemp = "\(minTemperature)"
                             }
                             
-                            if let maxTemperature = temperatureData["max"] as? Double {
+                            if let maxTemperatureInKelvin = temperatureData["max"] as? Double {
                                 //print(maxTemperature)
+                                let maxTemperature = Int(round(maxTemperatureInKelvin - 273.15))
                                 forecastDataObj._maxTemp = "\(maxTemperature)"
                             }
                             
@@ -85,13 +87,15 @@ class ForecastData {
                         self.weatherForecasts.append(forecastDataObj)
                         
                     }
-                    print(self.weatherForecasts.count)
                     
                 }
 
             }
+
+            completed()
             
         }
+        
         
     }
     

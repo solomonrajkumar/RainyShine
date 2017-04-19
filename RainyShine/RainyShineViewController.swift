@@ -42,6 +42,8 @@ class RainyShineViewController: UIViewController, UITableViewDataSource, UITable
         
         forecastData.downloadWeatherForecastData {
             // set table view cells
+            self.weatherForecastTableView.reloadData()
+            
         }
         
         
@@ -54,15 +56,23 @@ class RainyShineViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 10
+        //print(forecastData.weatherForecasts.count)
+        return forecastData.weatherForecasts.count
+        //return 10
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "weatherForecastCell", for: indexPath)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "weatherForecastCell", for: indexPath) as? WeatherForecastTableViewCell {
+            
+            cell.maxTemperatureLabel.text = forecastData.weatherForecasts[indexPath.row].maxTemp
+            cell.minTemperatureLabel.text = forecastData.weatherForecasts[indexPath.row].minTemp
+            cell.weatherTypeLabel.text = forecastData.weatherForecasts[indexPath.row].weatherType
+            return cell
+        }
         
+        return WeatherForecastTableViewCell()
         
     }
     
