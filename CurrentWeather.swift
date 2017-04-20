@@ -90,7 +90,7 @@ class CurrentWeather {
                 if let main = weatherDataDictionary["main"] as? Dictionary<String, AnyObject> {
                     let temperature = main["temp"] as! Double
                     let temperatureInCelsius = Int(round(temperature - 273.15))
-                    self._currentTemperature = "\(temperatureInCelsius)"
+                    self._currentTemperature = "\(temperatureInCelsius)°"
                 }
                 
             }

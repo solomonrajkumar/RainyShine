@@ -69,6 +69,8 @@ class RainyShineViewController: UIViewController, UITableViewDataSource, UITable
             cell.maxTemperatureLabel.text = forecastData.weatherForecasts[indexPath.row].maxTemp
             cell.minTemperatureLabel.text = forecastData.weatherForecasts[indexPath.row].minTemp
             cell.weatherTypeLabel.text = forecastData.weatherForecasts[indexPath.row].weatherType
+            cell.weatherForecastImage.image = UIImage(named: forecastData.weatherForecasts[indexPath.row].weatherType)
+            cell.dayOfTheWeekLabel.text = forecastData.weatherForecasts[indexPath.row].dayOfTheWeek
             return cell
         }
         
@@ -82,7 +84,7 @@ class RainyShineViewController: UIViewController, UITableViewDataSource, UITable
         currentWeatherLabel.text = currentWeather.weatherType
         dateLabel.text = currentWeather.date
         weatherIcon.image = UIImage(named: "\(currentWeather.weatherType)")
-        temperatureLabel.text = "\(currentWeather.currentTemperature)°"
+        temperatureLabel.text = "\(currentWeather.currentTemperature)"
     }
 
     

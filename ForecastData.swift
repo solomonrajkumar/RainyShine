@@ -14,6 +14,7 @@ class ForecastData {
     var _minTemp: String!
     var _maxTemp: String!
     var _weatherType: String!
+    var _dayOfTheWeek: String!
     var weatherForecasts = [ForecastData]()
     
     var minTemp: String {
@@ -43,6 +44,15 @@ class ForecastData {
         
     }
     
+    var dayOfTheWeek: String {
+        
+        if _dayOfTheWeek == nil {
+            _dayOfTheWeek = ""
+        }
+        return _dayOfTheWeek
+        
+    }
+    
     func downloadWeatherForecastData(completed: @escaping DownloadComplete){
         
         let currentWeatherForecastURL = URL(string: FORECAST_URL)
@@ -62,13 +72,13 @@ class ForecastData {
                             if let minTemperatureInKelvin = temperatureData["min"] as? Double {
                                 //print(minTemperature)
                                 let minTemperature = Int(round(minTemperatureInKelvin - 273.15))
-                                forecastDataObj._minTemp = "\(minTemperature)"
+                                forecastDataObj._minTemp = "\(minTemperature)°"
                             }
                             
                             if let maxTemperatureInKelvin = temperatureData["max"] as? Double {
                                 //print(maxTemperature)
                                 let maxTemperature = Int(round(maxTemperatureInKelvin - 273.15))
-                                forecastDataObj._maxTemp = "\(maxTemperature)"
+                                forecastDataObj._maxTemp = "\(maxTemperature)°"
                             }
                             
                         }
@@ -81,6 +91,18 @@ class ForecastData {
                             }
                             
                         }
+                        
+                        if let date = forecastDetail["dt"] as? Double {
+                            
+                            let unixConvertedDate = Date(timeIntervalSince1970: date)
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateStyle = .full
+                            dateFormatter.dateFormat = "EEEE"
+                            dateFormatter.timeStyle = .none
+                            forecastDataObj._dayOfTheWeek = unixConvertedDate.dayOfTheWeek()
+                            
+                        }
+                        
                         //print(forecastDataObj.maxTemp)
                         //print(forecastDataObj.minTemp)
                         //print(forecastDataObj.weatherType)
@@ -92,10 +114,25 @@ class ForecastData {
 
             }
 
+            self.weatherForecasts.remove(at: 0)
             completed()
             
         }
         
+        
+    }
+    
+    
+    
+}
+
+extension Date {
+    
+    func dayOfTheWeek() -> String {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        return dateFormatter.string(from: self)
         
     }
     
